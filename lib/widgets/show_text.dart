@@ -1,5 +1,5 @@
-import 'package:burncheck/utils/my_textstyle.dart';
 import 'package:flutter/material.dart';
+import 'package:burncheck/utils/my_textstyle.dart';
 
 class ShowText extends StatelessWidget {
   final String title;
@@ -7,7 +7,6 @@ class ShowText extends StatelessWidget {
   final TextAlign? textAlign;
   final TextOverflow? textOverflow;
   final int? maxLines;
-  final String? label;
 
   const ShowText({
     super.key,
@@ -16,7 +15,6 @@ class ShowText extends StatelessWidget {
     this.textAlign,
     this.textOverflow,
     this.maxLines,
-    this.label,
   });
 
   @override
@@ -27,7 +25,6 @@ class ShowText extends StatelessWidget {
       textAlign: textAlign ?? TextAlign.left,
       maxLines: maxLines ?? 2,
       overflow: textOverflow ?? TextOverflow.visible,
-      semanticsLabel: label,
     );
   }
 }
