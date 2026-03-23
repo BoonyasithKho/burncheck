@@ -46,7 +46,7 @@ class ShowHeader extends StatelessWidget {
                         ),
                         ShowText(
                           title: MyConstant
-                              .bottomBarMenuItems[state.screenSelect]["title"],
+                              .bottomBarMenuItems[state.screenSelect]["header"],
                           textStyle: MyTextstyle.h2Red(),
                         ),
                       ],

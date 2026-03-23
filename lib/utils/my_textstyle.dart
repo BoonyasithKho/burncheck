@@ -138,27 +138,33 @@ class MyTextstyle {
 
   // ~~~~~ b2 ~~~~~~~~~~
   static TextStyle b2Black() => TextStyle(
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: fontFamily,
     color: MyConstant.textBlack,
   );
   static TextStyle b2White() => TextStyle(
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: fontFamily,
     color: MyConstant.textWhite,
   );
+  static TextStyle b2WhiteBold() => TextStyle(
+    fontSize: 12,
+    fontFamily: fontFamily,
+    color: MyConstant.textWhite,
+    fontWeight: FontWeight.w900,
+  );
   static TextStyle b2lightGrey() => TextStyle(
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: fontFamily,
     color: MyConstant.textLightGrey,
   );
   static TextStyle b2DarkGrey() => TextStyle(
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: fontFamily,
     color: MyConstant.textDarkGrey,
   );
   static TextStyle b2Red() => TextStyle(
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: fontFamily,
     color: MyConstant.textRed,
   );

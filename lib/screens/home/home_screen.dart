@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 order: 2,
                 icon: Icons.fireplace_outlined,
                 textButton: 'บริหารจัดการเผาในที่โล่ง',
-                description: 'ระบบบริหารจัดการเชื้อเพลิงในพื้นที่โล่ง',
+                description: 'ระบบบริหารจัดการเชื้อเพลิง\nในพื้นที่โล่ง',
               ),
             ],
           ),
@@ -49,7 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: ShowImage(
               pathFile: MyAsset.logoOrganize,
-              assetWidth: size.width,
+              assetWidth: size.width * 0.5,
+              assetHeight: 32,
             ),
           ),
           ShowText(

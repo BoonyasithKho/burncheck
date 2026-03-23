@@ -60,7 +60,7 @@ class _PriceComponentState extends State<PriceComponent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
+                      padding: const EdgeInsets.only(top: 12.0, bottom: 4.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -77,14 +77,15 @@ class _PriceComponentState extends State<PriceComponent> {
                       ),
                     ),
                     Container(
-                      width: size.width * 0.94,
                       decoration: BoxDecoration(
-                        color: Colors.white.withAlpha(64),
+                        color: MyConstant.bgWhite,
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(4),
-                          topRight: Radius.circular(4),
+                          topLeft: Radius.circular(8.0),
+                          topRight: Radius.circular(8.0),
                         ),
-                        border: Border.all(color: MyConstant.border),
+                        border: Border(
+                          top: BorderSide(color: MyConstant.border, width: 2.0),
+                        ),
                       ),
                       child: SizedBox(
                         height: 56,
@@ -97,7 +98,7 @@ class _PriceComponentState extends State<PriceComponent> {
                                 padding: const EdgeInsets.only(left: 16.0),
                                 child: ShowText(
                                   title: 'ประเภท',
-                                  textStyle: MyTextstyle.b1Black(),
+                                  textStyle: MyTextstyle.b2Black(),
                                 ),
                               ),
                             ),
@@ -158,15 +159,25 @@ class _PriceComponentState extends State<PriceComponent> {
                         ),
                       ),
                     ),
-                    // Divider(),
+                    Divider(
+                      height: 0,
+                      indent: 8.0,
+                      endIndent: 8.0,
+                      color: MyConstant.border,
+                    ),
                     Expanded(
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: MyConstant.border),
-                          color: Colors.white.withAlpha(64),
+                          color: MyConstant.bgWhite,
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(4),
-                            bottomRight: Radius.circular(4),
+                            bottomLeft: Radius.circular(8.0),
+                            bottomRight: Radius.circular(8.0),
+                          ),
+                          border: Border(
+                            bottom: BorderSide(
+                              color: MyConstant.border,
+                              width: 2.0,
+                            ),
                           ),
                         ),
                         child: ListView.separated(
@@ -175,7 +186,7 @@ class _PriceComponentState extends State<PriceComponent> {
                               left: 16.0,
                               right: 16.0,
                             ),
-                            child: const Divider(height: 1),
+                            child: const Divider(height: 0),
                           ),
                           itemCount: snapshot.data.length,
                           itemBuilder: (context, index) => Padding(
@@ -246,7 +257,7 @@ class _PriceComponentState extends State<PriceComponent> {
       flex: 1,
       child: ShowText(
         title: titleValue,
-        textStyle: MyTextstyle.b1Black(),
+        textStyle: MyTextstyle.b2Black(),
         textAlign: titleAlign,
       ),
     );

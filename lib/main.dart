@@ -1,4 +1,5 @@
 import 'package:burncheck/bloc/mainpage/mainpage_bloc.dart';
+import 'package:burncheck/bloc/market/market_bloc.dart';
 import 'package:burncheck/screens/app.dart';
 import 'package:burncheck/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +10,13 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final marketBloc = BlocProvider(create: (context) => MainpageBloc());
+  final mainPageBloc = BlocProvider(create: (context) => MainpageBloc());
+  final marketBloc = BlocProvider(create: (context) => MarketBloc());
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [marketBloc],
+      providers: [mainPageBloc, marketBloc],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SplashScreen(nextPage: const MainShell()),

@@ -37,15 +37,37 @@ class MyConstant {
   // => Item Menu ========================================
   // Bottombar Menu Items
   static List<Map<String, dynamic>> bottomBarMenuItems = [
-    {"id": 0, "title": "หน้าหลัก", "icon": Icon(Icons.home_outlined)},
-    {"id": 1, "title": "ตลาด", "icon": Icon(Icons.storefront_outlined)},
-    {"id": 2, "title": "จัดการเผา", "icon": Icon(Icons.bakery_dining_rounded)},
+    {
+      "id": 0,
+      "title": "หน้าหลัก",
+      "header": "หน้าหลัก",
+      "icon": Icon(Icons.home_outlined),
+    },
+    {
+      "id": 1,
+      "title": "ตลาด",
+      "header": "ตลาดซื้อ - ขาย",
+      "icon": Icon(Icons.storefront_outlined),
+    },
+    {
+      "id": 2,
+      "title": "จัดการเผา",
+      "header": "จัดการเผา",
+      "icon": Icon(Icons.bakery_dining_rounded),
+    },
     {
       "id": 3,
       "title": "การแจ้งเตือน",
+      "header": "การแจ้งเตือน",
+
       "icon": Icon(Icons.notifications_none_rounded),
     },
-    {"id": 4, "title": "ฉัน", "icon": Icon(Icons.person_outline_rounded)},
+    {
+      "id": 4,
+      "title": "ฉัน",
+      "header": "ฉัน",
+      "icon": Icon(Icons.person_outline_rounded),
+    },
   ];
 
   // Home Menu Items
@@ -70,6 +92,51 @@ class MyConstant {
       "title": "แผนที่คำขอ",
       "icon": ShowSVG(pathFile: MyAsset.homeIcon_4),
     },
+  ];
+
+  // => Market Filter Items ==============================
+  // Filter Header Menu
+  static List<String> filterMenu = [
+    'ตัวกรอง',
+    'ประเภทตัวกรอง',
+    'ประเภทเศษซากเกษตรกรรม',
+    'คะแนน',
+    'ระยะทาง (กิโลเมตร)',
+    'ราคา (บาท)',
+  ];
+  // Filter Header Menu
+  static List<String> filterNotify = [
+    'ทั้งหมด',
+    'จุดรับซื้อใกล้ฉัน',
+    'จุดขายใกล้ฉัน',
+    'คะแนน',
+    'ระยะทาง (กิโลเมตร)',
+    'ราคา (บาท)',
+  ];
+  // Type Items
+  static List<Map<String, dynamic>> filterTypeItem = [
+    {"id": 0, "title": "ทั้งหมด", "value": 0},
+    {"id": 1, "title": "ประกาศซื้อ", "value": 0},
+    {"id": 2, "title": "ประกาศขาย", "value": 0},
+  ];
+  // Agri Waste Items
+  static List<Map<String, dynamic>> filterAgriWaste = [
+    {"id": 0, "title": "ทั้งหมด", "value": 0},
+    {"id": 1, "title": "ซังข้าวโพด", "value": 0},
+    {"id": 2, "title": "เปลือกข้าว", "value": 0},
+    {"id": 3, "title": "ฟาง", "value": 0},
+    {"id": 4, "title": "มันสำปะหลัง", "value": 0},
+    {"id": 5, "title": "เหง้ามันสำปะหลัง", "value": 0},
+    {"id": 6, "title": "อ้อย", "value": 0},
+  ];
+  // Agri Waste Items
+  static List<Map<String, dynamic>> filterScore = [
+    {"id": 0, "title": "ทั้งหมด", "value": 0},
+    {"id": 1, "title": "5.0", "value": 0},
+    {"id": 2, "title": "4.0", "value": 0},
+    {"id": 3, "title": "3.0", "value": 0},
+    {"id": 4, "title": "2.0", "value": 0},
+    {"id": 5, "title": "1.0", "value": 0},
   ];
 
   // Profile&Setting Menu Items

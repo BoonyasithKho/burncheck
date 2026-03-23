@@ -23,44 +23,58 @@ class BoxMenuComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
-      child: GestureDetector(
-        // onTap: () => getNavigate(order),
-        onTap: () {
-          debugPrint(textButton);
-        },
-        child: Container(
-          width: (size.width * 0.9) / 2,
-          decoration: BoxDecoration(
-            border: Border.all(color: MyConstant.marketRed, width: 2),
-            color: MyConstant.bgWhite,
-            borderRadius: BorderRadius.circular(4.0),
-          ),
-          height: 160,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CircleAvatar(
-                radius: 32,
-                backgroundColor: MyConstant.bgLightGrey2,
-                child: Icon(icon, size: 32, color: MyConstant.textRed),
+      child: Container(
+        width: (size.width * 0.9) / 2,
+        decoration: BoxDecoration(
+          border: Border.all(color: MyConstant.marketRed, width: 2),
+          color: MyConstant.bgWhite,
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        height: 176,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CircleAvatar(
+              radius: 32,
+              backgroundColor: MyConstant.bgLightGrey2,
+              child: Icon(icon, size: 32, color: MyConstant.textRed),
+            ),
+            Container(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ShowText(title: textButton, textStyle: MyTextstyle.h3Red()),
+                  ShowText(
+                    title: description,
+                    textStyle: MyTextstyle.b1DarkGrey(),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              Container(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ShowText(title: textButton, textStyle: MyTextstyle.h3Red()),
-                    ShowText(
-                      title: description,
-                      textStyle: MyTextstyle.b1DarkGrey(),
-                      textAlign: TextAlign.center,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: InkWell(
+                onTap: () => debugPrint(textButton),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: MyConstant.bgRed,
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  width: size.width,
+                  height: 24,
+                  child: Center(
+                    child: ShowText(
+                      title: 'จัดการเลย',
+                      textStyle: MyTextstyle.b2White(),
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
