@@ -65,32 +65,8 @@ class MyConstant {
     {
       "id": 4,
       "title": "ฉัน",
-      "header": "ฉัน",
+      "header": "ข้อมูลส่วนตัว & การตั้งค่า",
       "icon": Icon(Icons.person_outline_rounded),
-    },
-  ];
-
-  // Home Menu Items
-  static List<Map<String, dynamic>> homeMenuItems = [
-    {
-      "id": 0,
-      "title": "ตรวจสอบผล",
-      "icon": ShowSVG(pathFile: MyAsset.homeIcon_1),
-    },
-    {
-      "id": 1,
-      "title": "รายงานผล",
-      "icon": ShowSVG(pathFile: MyAsset.homeIcon_2),
-    },
-    {
-      "id": 2,
-      "title": "ทบทวนสิทธิ์",
-      "icon": ShowSVG(pathFile: MyAsset.homeIcon_3),
-    },
-    {
-      "id": 3,
-      "title": "แผนที่คำขอ",
-      "icon": ShowSVG(pathFile: MyAsset.homeIcon_4),
     },
   ];
 
@@ -139,20 +115,52 @@ class MyConstant {
     {"id": 5, "title": "1.0", "value": 0},
   ];
 
+  // => Burn Management ----==============================
+  // Menu Select Zone
+  static List<Map<String, dynamic>> burnManagementMenuItems = [
+    {
+      "id": 0,
+      "title": "ตรวจสอบผล",
+      "icon": ShowSVG(pathFile: MyAsset.homeIcon_1),
+    },
+    {
+      "id": 1,
+      "title": "รายงานผล",
+      "icon": ShowSVG(pathFile: MyAsset.homeIcon_2),
+    },
+    {
+      "id": 2,
+      "title": "ทบทวนสิทธิ์",
+      "icon": ShowSVG(pathFile: MyAsset.homeIcon_3),
+    },
+    {
+      "id": 3,
+      "title": "แผนที่คำขอ",
+      "icon": ShowSVG(pathFile: MyAsset.homeIcon_4),
+    },
+  ];
+
   // Profile&Setting Menu Items
+  // Profile Header Menu
+  static List<String> profileMenu = [
+    'ทั่วไป',
+    'ประกาศทั้งหมดของฉัน',
+    'การจองทั้งหมดของฉัน',
+    'รายการอื่นๆ ',
+  ];
   static List<Map<String, dynamic>> generalMenuItems = [
     {
       "id": 0,
       "title": "บัญชีของฉัน",
       "subtitle": "เปลี่ยนแปลงบัญชีของคุณ",
-      "icon": Icon(Icons.person),
+      "icon": Icon(Icons.person, color: bgRed),
       "url": '',
     },
     {
       "id": 1,
       "title": "เปลี่ยนรหัสผ่าน",
       "subtitle": "เปลี่ยนแปลงรหัสผ่านของคุณ",
-      "icon": Icon(Icons.lock_outline),
+      "icon": Icon(Icons.lock_outline, color: bgRed),
       "url": '',
     },
   ];
@@ -161,14 +169,14 @@ class MyConstant {
       "id": 0,
       "title": "ประกาศที่ชื่นชอบ",
       "subtitle": "รายการประกาศที่ชื่นชอบ",
-      "icon": Icon(Icons.favorite),
+      "icon": Icon(Icons.favorite, color: bgRed),
       "url": '',
     },
     {
       "id": 1,
       "title": "ประกาศของฉัน",
       "subtitle": "รายการประกาศของฉัน",
-      "icon": Icon(Icons.mark_chat_unread_outlined),
+      "icon": Icon(Icons.mark_chat_unread_outlined, color: bgRed),
       "url": '',
     },
   ];
@@ -177,14 +185,14 @@ class MyConstant {
       "id": 0,
       "title": "การจองของฉัน",
       "subtitle": "รายการจองของฉัน",
-      "icon": Icon(Icons.bookmark_border_rounded),
+      "icon": Icon(Icons.bookmark_border_rounded, color: bgRed),
       "url": '',
     },
     {
       "id": 1,
       "title": "ประกาศที่มีการจอง",
       "subtitle": "รายการที่มีการจองของฉัน",
-      "icon": Icon(Icons.bookmark_border_rounded),
+      "icon": Icon(Icons.bookmark_border_rounded, color: bgRed),
       "url": '',
     },
   ];
@@ -193,14 +201,14 @@ class MyConstant {
       "id": 0,
       "title": "ช่วยเหลือ / ติดต่อเรา",
       "subtitle": "ติดต่อเราหรือขอความช่วยเหลือ",
-      "icon": Icon(Icons.call),
+      "icon": Icon(Icons.call, color: bgRed),
       "url": '',
     },
     {
       "id": 1,
       "title": "เกี่ยวกับแอปพลิเคชัน",
       "subtitle": "เวอร์ชั่น $appVersion",
-      "icon": Icon(Icons.info_outline),
+      "icon": Icon(Icons.info_outline, color: bgRed),
       "url": '',
     },
   ];
