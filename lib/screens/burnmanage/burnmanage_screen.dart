@@ -1,7 +1,10 @@
 import 'package:burncheck/screens/burnmanage/burnmanage_component/addrequest_component.dart';
+import 'package:burncheck/utils/my_asset.dart';
 import 'package:burncheck/utils/my_constant.dart';
 import 'package:burncheck/utils/my_textstyle.dart';
 import 'package:burncheck/widgets/show_header.dart';
+import 'package:burncheck/widgets/show_image.dart';
+import 'package:burncheck/widgets/show_svg.dart';
 import 'package:burncheck/widgets/show_text.dart';
 import 'package:flutter/material.dart';
 
@@ -134,9 +137,12 @@ class _BurnmanageScreenState extends State<BurnmanageScreen> {
         width: (size.width * 0.9) / 2,
         height: 116,
         decoration: BoxDecoration(
-          color: Colors.white.withAlpha(128),
+          color: MyConstant.bgWhite,
           border: Border.all(color: MyConstant.border),
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(16.0),
+          boxShadow: [
+            BoxShadow(color: MyConstant.border, offset: const Offset(0, -3)),
+          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -160,38 +166,144 @@ class _BurnmanageScreenState extends State<BurnmanageScreen> {
   Padding airQualityZone(Size size) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: Container(
+      child: SizedBox(
         width: size.width * 0.94,
-        height: 100,
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        height: 192,
+        child: Stack(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ShowText(title: 'วันนี้', textStyle: MyTextstyle.b2Black()),
-                ShowText(
-                  title: '${now.year}-${now.month}-${now.day}',
-                  textStyle: MyTextstyle.b2Black(),
-                ),
-              ],
+            ShowImage(
+              pathFile: MyAsset.pm25Verybad,
+              assetWidth: size.width,
+              assetHeight: 192,
             ),
-            ShowText(title: '104', textStyle: MyTextstyle.h1Black()),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ShowText(title: 'ต่ำ', textStyle: MyTextstyle.b2Black()),
-                ShowText(
-                  title: 'ดัชนีคุณภาพอากาศ',
-                  textStyle: MyTextstyle.b2Black(),
-                ),
-              ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        children: [
+                          Center(
+                            child: ShowText(
+                              title: 'ดัชนีคุณภาพอากาศรายชั่วโมง',
+                              textStyle: MyTextstyle.h3WhiteBoldShadows(),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 176,
+                            height: 136,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 16.0,
+                                    vertical: 6.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: ShowText(title: 'คุณภาพอากาศดีมาก'),
+                                ),
+                                ShowText(
+                                  title: 'ข้อมูลอ้างอิงจาก : เช็คฝุ่น GISTDA',
+                                  textStyle: MyTextstyle.b1White(),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: 176,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ShowText(
+                                    title: '75',
+                                    textStyle: TextStyle(
+                                      fontFamily: MyTextstyle.fontFamily,
+                                      fontSize: 64,
+                                      fontWeight: FontWeight.bold,
+                                      color: MyConstant.textWhite,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 10.0,
+                                          color: MyConstant.textDarkGrey,
+                                          offset: Offset(0.5, 1.0),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4.0,
+                          vertical: 2.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: MyConstant.bgDarkGrey.withAlpha(64),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                        child: ShowText(
+                          // title: '${now.year}-${now.month}-${now.day}',
+                          title: '13 มีนาคม 2026 เวลา 02:14 น.',
+                          textStyle: MyTextstyle.dateShowWhite(),
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          ShowImage(
+                            pathFile: MyAsset.weatherIcon,
+                            assetHeight: 24,
+                          ),
+                          ShowText(title: '1${MyConstant.unitTemperature}'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          ShowSVG(pathFile: MyAsset.waterIcon, assetHeight: 24),
+                          ShowText(title: ' 2%'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          ShowSVG(pathFile: MyAsset.windIcon, assetHeight: 16),
+                          ShowText(title: ' 3 กม./ชม.'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
+            // ShowText(title: '104', textStyle: MyTextstyle.h1Black()),
+            // Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     ShowText(title: 'ต่ำ', textStyle: MyTextstyle.b2Black()),
+            //     ShowText(
+            //       title: 'ดัชนีคุณภาพอากาศ',
+            //       textStyle: MyTextstyle.b2Black(),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

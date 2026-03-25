@@ -18,6 +18,14 @@ class MainShell extends StatefulWidget {
 
 class _MainShellState extends State<MainShell> {
   @override
+  void initState() {
+    super.initState();
+    context.read<MainpageBloc>().add(
+      MainpageEventGetPM25(userPosition: [14, 100]),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final List<Widget> pages = [

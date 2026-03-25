@@ -6,6 +6,10 @@ class MyConstant {
   static String appName = 'BurnCheck';
   static String appVersion = '2.0.35';
 
+  // => Unit ============================================
+  static String unitTemperature = '°C';
+  static String unitPM = 'µg/m³';
+
   // => Color ============================================
   // => Background
   static Color bgRed = const Color(0xffAE3D1F);
@@ -13,6 +17,7 @@ class MyConstant {
   static Color bgLightGrey1 = Color(0xffF4F4F4);
   static Color bgLightGrey2 = const Color(0xffF1F1F1);
   static Color bgLightGrey3 = const Color(0xffFFECE7);
+  static Color bgDarkGrey = const Color(0xff757575);
 
   // => Text Color
   static const textBlack = Color(0xff000000);

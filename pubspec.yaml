@@ -30,6 +30,8 @@ flutter:
     - assets/images/
     - assets/images/logo/
     - assets/images/svg/
+    - assets/images/png/
+    - assets/images/png/pm25_gain/
 
   fonts:
     - family: Kanit

@@ -90,6 +90,19 @@ class MyTextstyle {
     fontFamily: fontFamily,
     color: MyConstant.textWhite,
   );
+  static TextStyle h3WhiteBoldShadows() => TextStyle(
+    fontSize: 14,
+    fontFamily: fontFamily,
+    color: MyConstant.textWhite,
+    fontWeight: FontWeight.w900,
+    shadows: [
+      Shadow(
+        blurRadius: 10.0,
+        color: MyConstant.textDarkGrey,
+        offset: Offset(0.5, 1.0),
+      ),
+    ],
+  );
   static TextStyle h3lightGrey() => TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,
@@ -153,6 +166,7 @@ class MyTextstyle {
     color: MyConstant.textWhite,
     fontWeight: FontWeight.w900,
   );
+
   static TextStyle b2lightGrey() => TextStyle(
     fontSize: 12,
     fontFamily: fontFamily,
@@ -167,6 +181,20 @@ class MyTextstyle {
     fontSize: 12,
     fontFamily: fontFamily,
     color: MyConstant.textRed,
+  );
+
+  // ===== Date small ====
+  static TextStyle dateShowBlack() => TextStyle(
+    fontSize: 8,
+    color: MyConstant.textBlack,
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle dateShowWhite() => TextStyle(
+    fontSize: 8,
+    color: MyConstant.textWhite,
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.bold,
   );
 
   // ===== Loading ======
