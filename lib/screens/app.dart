@@ -20,20 +20,20 @@ class _MainShellState extends State<MainShell> {
   @override
   void initState() {
     super.initState();
-    context.read<MainpageBloc>().add(
-      MainpageEventGetPM25(userPosition: [14, 100]),
-    );
+    context.read<MainpageBloc>().add(MainpageEventGetUserLocation());
+    context.read<MainpageBloc>().add(MainpageEventGetPM25());
+    context.read<MainpageBloc>().add(MainpageEventGetWeather());
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final List<Widget> pages = [
-      HomeScreen(),
-      MarketScreen(),
-      BurnmanageScreen(),
-      NotificationScreen(),
-      ProfilesettingScreen(),
+      HomeScreen(), // #0
+      MarketScreen(), // #1
+      BurnmanageScreen(), //#2
+      NotificationScreen(), // #3
+      ProfilesettingScreen(), // #4
     ];
 
     return BlocBuilder<MainpageBloc, MainpageState>(

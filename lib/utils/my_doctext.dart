@@ -1,3 +1,66 @@
 class DocText {
   static String forecastWeatherText = 'พยากรณ์ดัชนีคุณภาพอากาศ 6 วัน';
+
+  static List<Map<String, dynamic>> showditems = [
+    {
+      "id": 1,
+      "type": "request",
+      "title": "คำร้องขอหมายเลข : 126",
+      "subtitle": "ตำบลทุ่งสองห้อง อำเภอหลักสี่\nจังหวัดกรุงเทพมหานคร",
+      "time": "15:33",
+      "badge": "ฉบับร่าง",
+      "statusColor": 0xFFA0522D,
+      "dotColor": 0xFFD9D9D9,
+    },
+    {
+      "id": 2,
+      "type": "approved",
+      "title": "อนุมัติ - หมายเลข 126",
+      "subtitle": "ระบบตรวจสอบประกาศขายหมายเลข 126 ของท่าน สำเร็จแล้ว",
+      "time": "15:33",
+      "badge": null,
+      "statusColor": 0xFF00C853,
+      "dotColor": 0xFF00C853,
+    },
+    {
+      "id": 3,
+      "type": "request",
+      "title": "คำร้องขอหมายเลข : 126",
+      "subtitle": "ตำบลทุ่งสองห้อง อำเภอหลักสี่\nจังหวัดกรุงเทพมหานคร",
+      "time": "15:33",
+      "badge": "ฉบับร่าง",
+      "statusColor": 0xFFA0522D,
+      "dotColor": 0xFFD9D9D9,
+    },
+    {
+      "id": 4,
+      "type": "pending",
+      "title": "กำลังตรวจสอบ - หมายเลข 126",
+      "subtitle": "ระบบกำลังตรวจสอบประกาศขายหมายเลข 126 ของท่าน",
+      "time": "15:33",
+      "badge": null,
+      "statusColor": 0xFF4A90E2,
+      "dotColor": 0xFF4A90E2,
+    },
+    {
+      "id": 5,
+      "type": "request",
+      "title": "คำร้องขอหมายเลข : 126",
+      "subtitle": "ตำบลทุ่งสองห้อง อำเภอหลักสี่\nจังหวัดกรุงเทพมหานคร",
+      "time": "15:33",
+      "badge": "ฉบับร่าง",
+      "statusColor": 0xFFA0522D,
+      "dotColor": 0xFFD9D9D9,
+    },
+    {
+      "id": 6,
+      "type": "rejected",
+      "title": "ไม่อนุมัติ - หมายเลข 126",
+      "subtitle": "ระบบตรวจสอบประกาศขายหมายเลข 126 ของท่าน ไม่สำเร็จ",
+      "time": "15:33",
+      "badge": null,
+      "statusColor": 0xFFFF0000,
+      "dotColor": 0xFFFF0000,
+    },
+  ];
 }

@@ -23,13 +23,6 @@ class ShowBottomNavigationBar extends StatelessWidget {
           top: Radius.circular(18),
           bottom: Radius.circular(0),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: MyConstant.bgLightGrey3,
-            blurRadius: 40,
-            offset: const Offset(0, -4),
-          ),
-        ],
       ),
       child: Row(
         children: List.generate(MyConstant.bottomBarMenuItems.length, (index) {

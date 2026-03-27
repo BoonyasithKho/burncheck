@@ -1,4 +1,5 @@
 import 'package:burncheck/utils/my_asset.dart';
+import 'package:burncheck/utils/my_textstyle.dart';
 import 'package:burncheck/widgets/show_svg.dart';
 import 'package:flutter/material.dart';
 
@@ -215,6 +216,52 @@ class MyConstant {
       "subtitle": "เวอร์ชั่น $appVersion",
       "icon": Icon(Icons.info_outline, color: bgRed),
       "url": '',
+    },
+  ];
+
+  // => PM25 Items
+  static List<Map<String, dynamic>> iconPM = [
+    {
+      "description": "คุณภาพอากาศดีมาก",
+      "iconBG": MyAsset.pm25verygood,
+      "textStyleShow": MyTextstyle.h3BlackBoldShadows(),
+      "textStyleB1Show": MyTextstyle.b1Black(),
+      "textDateShow": MyTextstyle.dateShowBlack(),
+      "colorGain": Color(0xff51D1FF),
+    },
+    {
+      "description": "คุณภาพอากาศดี",
+      "iconBG": MyAsset.pm25Good,
+      "textStyleShow": MyTextstyle.h3BlackBoldShadows(),
+      "textStyleB1Show": MyTextstyle.b1Black(),
+      "textDateShow": MyTextstyle.dateShowBlack(),
+      "colorGain": Color(0xff14E86A),
+    },
+    {
+      "description": "ปานกลาง",
+      "iconBG": MyAsset.pm25Normal,
+      "textStyleShow": MyTextstyle.h3BlackBoldShadows(),
+      "textStyleB1Show": MyTextstyle.b1Black(),
+      "textDateShow": MyTextstyle.dateShowBlack(),
+      "colorGain": Color(0xffFFBB15),
+    },
+    {
+      "description": "เริ่มมีผลต่อสุขภาพ",
+      "pmValueColor": MyTextstyle.h3White(),
+      "iconBG": MyAsset.pm25Bad,
+      "textStyleShow": MyTextstyle.h3WhiteBoldShadows(),
+      "textStyleB1Show": MyTextstyle.b1Black(),
+      "textDateShow": MyTextstyle.dateShowWhite(),
+      "colorGain": Color(0xffFF4F00),
+    },
+    {
+      "description": "มีผลต่อสุขภาพ",
+      "pmValueColor": MyTextstyle.h3White(),
+      "iconBG": MyAsset.pm25Verybad,
+      "textStyleShow": MyTextstyle.h3WhiteBoldShadows(),
+      "textStyleB1Show": MyTextstyle.b1White(),
+      "textDateShow": MyTextstyle.dateShowWhite(),
+      "colorGain": Color(0xffFF1B1B),
     },
   ];
 }

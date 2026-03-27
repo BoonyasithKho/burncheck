@@ -84,6 +84,19 @@ class MyTextstyle {
     fontFamily: fontFamily,
     color: MyConstant.textBlack,
   );
+  static TextStyle h3BlackBoldShadows() => TextStyle(
+    fontSize: 14,
+    fontFamily: fontFamily,
+    color: MyConstant.textBlack,
+    fontWeight: FontWeight.w900,
+    shadows: [
+      Shadow(
+        blurRadius: 8.0,
+        color: MyConstant.textDarkGrey,
+        offset: Offset(0, 1.0),
+      ),
+    ],
+  );
   static TextStyle h3White() => TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w600,
@@ -97,9 +110,9 @@ class MyTextstyle {
     fontWeight: FontWeight.w900,
     shadows: [
       Shadow(
-        blurRadius: 10.0,
+        blurRadius: 8.0,
         color: MyConstant.textDarkGrey,
-        offset: Offset(0.5, 1.0),
+        offset: Offset(0, 1.0),
       ),
     ],
   );
@@ -191,7 +204,7 @@ class MyTextstyle {
     fontWeight: FontWeight.bold,
   );
   static TextStyle dateShowWhite() => TextStyle(
-    fontSize: 8,
+    fontSize: 6,
     color: MyConstant.textWhite,
     fontFamily: fontFamily,
     fontWeight: FontWeight.bold,

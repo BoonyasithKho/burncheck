@@ -7,21 +7,18 @@ abstract class MainpageEvent extends Equatable {
   List<Object> get props => [];
 }
 
+// เปลี่ยนหน้าต่างเมนูการแสดงผล
+
 class MainpageEventScreenSelect extends MainpageEvent {
   final int screenNo;
   const MainpageEventScreenSelect({required this.screenNo});
 }
 
-class MainpageEventGetPM25 extends MainpageEvent {
-  final List<double> userPosition;
-  const MainpageEventGetPM25({required this.userPosition});
-}
+// Get ข้อมูล PM25 จาก เช็คฝุ่น
+class MainpageEventGetPM25 extends MainpageEvent {}
 
-class MainpageEventGetWeather extends MainpageEvent {
-  final List<double> userPosition;
-  const MainpageEventGetWeather({required this.userPosition});
-}
+// Get ข้อมูลสภาพอากาศ
+class MainpageEventGetWeather extends MainpageEvent {}
 
-class MainpageEventGetUserLocation extends MainpageEvent {
-  const MainpageEventGetUserLocation();
-}
+// เริ่มขอสิทธิ์ + ดึงตำแหน่ง
+class MainpageEventGetUserLocation extends MainpageEvent {}

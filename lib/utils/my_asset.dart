@@ -18,6 +18,6 @@ class MyAsset {
   static String homeIcon_4 = 'assets/images/svg/thailand.svg';
   static String fireIcon = 'assets/images/svg/fireIcon.svg';
   static String weatherIcon = 'assets/images/png/weatherIcon.png';
-  static String waterIcon = 'assets/images/svg/waterIcon.svg';
+  static String waterIcon = 'assets/images/png/waterIcon.png';
   static String windIcon = 'assets/images/svg/windIcon.svg';
 }
