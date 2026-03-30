@@ -13,7 +13,7 @@ class WeatherModel {
   final String source;
   final String province;
   final DateTime time;
-  final double temperature;
+  final dynamic temperature;
   final double dewPoint;
   final int humidity;
   final double pressureSurfaceLevel;
@@ -42,7 +42,7 @@ class WeatherModel {
     String? source,
     String? province,
     DateTime? time,
-    double? temperature,
+    dynamic temperature,
     double? dewPoint,
     int? humidity,
     double? pressureSurfaceLevel,

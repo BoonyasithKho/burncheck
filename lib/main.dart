@@ -1,3 +1,4 @@
+import 'package:burncheck/bloc/burnmanage/burnmanage_bloc.dart';
 import 'package:burncheck/bloc/mainpage/mainpage_bloc.dart';
 import 'package:burncheck/bloc/market/market_bloc.dart';
 import 'package:burncheck/bloc/profilesetting/profilesetting_bloc.dart';
@@ -16,11 +17,12 @@ class MyApp extends StatelessWidget {
   final profileSettingBloc = BlocProvider(
     create: (context) => ProfilesettingBloc(),
   );
+  final burnManageBloc = BlocProvider(create: (context) => BurnmanageBloc());
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [mainPageBloc, marketBloc, profileSettingBloc],
+      providers: [mainPageBloc, marketBloc, profileSettingBloc, burnManageBloc],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SplashScreen(nextPage: const MainShell()),
