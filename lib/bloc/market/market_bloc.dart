@@ -1,6 +1,11 @@
+import 'dart:convert';
+
+import 'package:burncheck/models/agriwaste_model.dart';
+import 'package:burncheck/utils/my_api.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 
 part 'market_event.dart';
 part 'market_state.dart';
@@ -14,6 +19,8 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
           scoreSelected: 0,
           rangeSelect: 10,
           priceRange: RangeValues(0, 100),
+          productItem: [],
+          menuDetailSelect: 0,
         ),
       ) {
     on<MarkerEventTypeSelect>(onTypeSelection);
@@ -21,6 +28,8 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
     on<MarkerEventScoreSelect>(onScoreSelection);
     on<MarkerEventRangeSelect>(onRangeSelection);
     on<MarkerEventPriceSelect>(onPriceSelecton);
+    on<MarkerEventGetProductAll>(onGetProductAll);
+    on<MarkerEventGetProductDetailMenu>(onProductDetailMenu);
   }
 
   Future<void> onTypeSelection(
@@ -56,5 +65,48 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
     Emitter emit,
   ) async {
     emit(state.copyWith(priceRange: event.priceRange));
+  }
+
+  Future<void> onGetProductAll(
+    MarkerEventGetProductAll event,
+    Emitter emit,
+  ) async {
+    final productToBuySell = await getProductAgriWaste();
+    emit(state.copyWith(productItem: productToBuySell));
+  }
+
+  Future<void> onProductDetailMenu(
+    MarkerEventGetProductDetailMenu event,
+    Emitter emit,
+  ) async {
+    emit(state.copyWith(menuDetailSelect: event.menuIndexSelect));
+  }
+
+  Future<List<Map<String, dynamic>>> getProductAgriWaste() async {
+    final url = MyApi.urlProductBuySell;
+    final response = await http.get(Uri.parse(url));
+
+    List<Map<String, dynamic>> productItem = [];
+
+    if (response.statusCode == 200) {
+      var responseJson = AgriWasteModel.fromJson(jsonDecode(response.body));
+      for (var i = 0; i < responseJson.data.length; i++) {
+        productItem.add({
+          'postId': responseJson.data[i].postId,
+          'postType': responseJson.data[i].type.id,
+          'productTypeName': responseJson.data[i].productType.text,
+          'locAdminName': responseJson.data[i].address.text,
+          'postRating': responseJson.data[i].rating,
+          'productPrice': int.parse(responseJson.data[i].price),
+          'postOwner': responseJson.data[i].author,
+          'productImage': responseJson.data[i].productImages!.isNotEmpty
+              ? responseJson.data[i].productImages![0].thumbnail
+              : "",
+          'creatDate': responseJson.data[i].createdAt,
+          'expireDate': responseJson.data[i].expiresAt,
+        });
+      }
+    }
+    return productItem;
   }
 }

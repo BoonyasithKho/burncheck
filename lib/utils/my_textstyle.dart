@@ -146,6 +146,12 @@ class MyTextstyle {
     fontFamily: fontFamily,
     color: MyConstant.textWhite,
   );
+  static TextStyle b1WhiteBold() => TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w700,
+    fontFamily: fontFamily,
+    color: MyConstant.textWhite,
+  );
   static TextStyle b1lightGrey() => TextStyle(
     fontSize: 10,
     fontFamily: fontFamily,

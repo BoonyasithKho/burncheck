@@ -2,7 +2,9 @@ import 'package:burncheck/bloc/market/market_bloc.dart';
 import 'package:burncheck/screens/market/market_component/addnews_component.dart';
 import 'package:burncheck/screens/market/market_component/distanceslider_component.dart';
 import 'package:burncheck/screens/market/market_component/priceslider_component.dart';
+import 'package:burncheck/screens/market/market_component/productdetail_component.dart';
 import 'package:burncheck/screens/market/market_component/radiochip_component.dart';
+import 'package:burncheck/utils/my_api.dart';
 import 'package:burncheck/utils/my_asset.dart';
 import 'package:burncheck/utils/my_constant.dart';
 import 'package:burncheck/utils/my_textstyle.dart';
@@ -20,6 +22,11 @@ class MarketScreen extends StatefulWidget {
 
 class _MarketScreenState extends State<MarketScreen> {
   final TextEditingController _controller = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    context.read<MarketBloc>().add(MarkerEventGetProductAll());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +63,7 @@ class _MarketScreenState extends State<MarketScreen> {
                       ],
                     ),
                   ),
-                  notifyContent(),
+                  notifyContent(state, size),
                 ],
               ),
             ),
@@ -67,34 +74,253 @@ class _MarketScreenState extends State<MarketScreen> {
     );
   }
 
-  Expanded notifyContent() {
+  Expanded notifyContent(MarketState state, Size size) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.only(top: 16.0, left: 12.0, right: 12.0),
+        padding: EdgeInsets.only(top: 8.0, left: 12.0, right: 12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ShowText(title: 'ประกาศทั้งหมด', textStyle: MyTextstyle.b2Black()),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 32.0, bottom: 8.0),
-                      child: SizedBox(
-                        width: 40,
-                        child: Image.asset(MyAsset.logoApp),
-                      ),
-                    ),
-                    ShowText(
-                      title: 'ไม่มีข้อมูล',
-                      textStyle: MyTextstyle.b2DarkGrey(),
-                    ),
-                  ],
+            ShowText(title: 'ประกาศทั้งหมด', textStyle: MyTextstyle.h3Black()),
+            if (state.productItem != [])
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.only(top: 16, bottom: 32),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      const double spacing = 16;
+                      final double itemWidth =
+                          (constraints.maxWidth - spacing) / 2;
+                      return Wrap(
+                        spacing: spacing,
+                        runSpacing: spacing,
+                        children: List.generate(state.productItem.length, (
+                          index,
+                        ) {
+                          final item = state.productItem[index];
+                          return GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    ProductdetailComponent(content: item),
+                              ),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.all(8.0),
+                              width: itemWidth,
+                              decoration: BoxDecoration(
+                                color: MyConstant.bgWhite,
+                                borderRadius: BorderRadius.circular(8.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: MyConstant.textDarkGrey,
+                                    blurRadius: 3,
+                                    offset: Offset(0, 3),
+                                  ),
+                                  BoxShadow(
+                                    color: MyConstant.textRed,
+                                    offset: Offset(0, -2),
+                                  ),
+                                  BoxShadow(
+                                    color: MyConstant.textRed,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Stack(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(
+                                          12.0,
+                                        ),
+                                        child: item["productImage"] != ""
+                                            ? Image.network(
+                                                '${MyApi.urlProductImage}/${item["productImage"]}',
+                                                width: 155,
+                                                height: 118,
+                                              )
+                                            : Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        12.0,
+                                                      ),
+                                                  border: Border.all(
+                                                    color: MyConstant.marketRed,
+                                                    width: 1,
+                                                  ),
+                                                ),
+                                                child: Image.network(
+                                                  MyApi.urlProductNoImage,
+                                                  width: 155,
+                                                  height: 118,
+                                                ),
+                                              ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 8.0,
+                                        ),
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                            left: 4.0,
+                                            right: 4.0,
+                                            top: 2.0,
+                                            bottom: 2.0,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(8.0),
+                                              bottomRight: Radius.circular(8.0),
+                                            ),
+                                            color: MyConstant.bgRed,
+                                          ),
+                                          child: ShowText(
+                                            title: 'หมายเลข ${item["postId"]}',
+                                            textStyle:
+                                                MyTextstyle.b1WhiteBold(),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: itemWidth - 24,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0,
+                                          ),
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8.0,
+                                              vertical: 2.0,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: item["postType"] == 0
+                                                  ? MyConstant.marketRed
+                                                        .withAlpha(96)
+                                                  : MyConstant.marketGreen
+                                                        .withAlpha(96),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: ShowText(
+                                              title: item["postType"] == 0
+                                                  ? "ประกาศซื้อ"
+                                                  : "ประกาศขาย",
+                                              textStyle: MyTextstyle.b1Black(),
+                                            ),
+                                          ),
+                                        ),
+                                        ShowText(
+                                          title: item["productTypeName"],
+                                          textStyle: MyTextstyle.h2Black(),
+                                        ),
+                                        ShowText(
+                                          title: item["locAdminName"],
+                                          textStyle: MyTextstyle.b1DarkGrey(),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                            ),
+                                            ShowText(
+                                              title: item["postRating"]
+                                                  .toString(),
+                                              textStyle: MyTextstyle.h2Black(),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4.0,
+                                    ),
+                                    child: Container(
+                                      width: itemWidth - 24,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: MyConstant.bgRed,
+                                        borderRadius: BorderRadius.circular(
+                                          40.0,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: MyConstant.textDarkGrey,
+                                            blurRadius: 4,
+                                            offset: Offset(0, 2),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ShowText(
+                                            title: item["productPrice"]
+                                                .toString(),
+                                            textStyle: MyTextstyle.h2White(),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 3.0,
+                                            ),
+                                            child: ShowText(
+                                              title: " (บาท/กก.)",
+                                              textStyle: MyTextstyle.b2White(),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  ShowText(
+                                    title: 'ประกาศโดย : ${item["postOwner"]}',
+                                    textStyle: MyTextstyle.b1Black(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
+
+            if (state.productItem == [])
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(top: 8.0, left: 12.0, right: 12.0),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 32.0, bottom: 8.0),
+                        child: SizedBox(
+                          width: 40,
+                          child: Image.asset(MyAsset.logoApp),
+                        ),
+                      ),
+                      ShowText(
+                        title: 'ไม่มีข้อมูล',
+                        textStyle: MyTextstyle.b2DarkGrey(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
           ],
         ),
       ),

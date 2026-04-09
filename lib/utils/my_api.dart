@@ -17,4 +17,8 @@ class MyApi {
       "https://pm25.gistda.or.th/rest/getPm25byLocation";
   static String urlDataWeather =
       'https://lifedee-api-backend-300940441289.asia-southeast3.run.app/proxy/weather/current';
+  static String urlProductBuySell = 'https://burncheck.com/ajax/v3/posts';
+  static String urlProductImage = 'https://burncheck.com/images/products';
+  static String urlProductNoImage =
+      'https://burncheck.com/images/icons/noimage.jpg';
 }

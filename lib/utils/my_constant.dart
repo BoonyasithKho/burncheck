@@ -95,6 +95,7 @@ class MyConstant {
     'ระยะทาง (กิโลเมตร)',
     'ราคา (บาท)',
   ];
+
   // Type Items
   static List<Map<String, dynamic>> filterTypeItem = [
     {"id": 0, "title": "ทั้งหมด", "value": 0},
@@ -120,6 +121,9 @@ class MyConstant {
     {"id": 4, "title": "2.0", "value": 0},
     {"id": 5, "title": "1.0", "value": 0},
   ];
+
+  // Menu shoe product detail
+  static List<String> menuProductDetail = ['รายละเอียด', 'แผนที่', 'รีวิว'];
 
   // => Burn Management ----==============================
   // Menu Select Zone
