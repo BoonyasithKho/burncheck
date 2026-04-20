@@ -20,4 +20,8 @@ class MyAsset {
   static String weatherIcon = 'assets/images/png/weatherIcon.png';
   static String waterIcon = 'assets/images/png/waterIcon.png';
   static String windIcon = 'assets/images/svg/windIcon.svg';
+  static String greenPinIcon = 'assets/images/svg/pin_green.svg';
+  static String redPinIcon = 'assets/images/svg/pin_red.svg';
+  static String statFull = 'assets/images/svg/star_full.svg';
+  static String starHalf = 'assets/images/svg/star_half.svg';
 }

@@ -77,7 +77,7 @@ class _MarketScreenState extends State<MarketScreen> {
   Expanded notifyContent(MarketState state, Size size) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.only(top: 8.0, left: 12.0, right: 12.0),
+        padding: EdgeInsets.only(top: 16.0, left: 12.0, right: 12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -120,7 +120,7 @@ class _MarketScreenState extends State<MarketScreen> {
                                   ),
                                   BoxShadow(
                                     color: MyConstant.textRed,
-                                    offset: Offset(0, -2),
+                                    offset: Offset(0, -3),
                                   ),
                                   BoxShadow(
                                     color: MyConstant.textRed,

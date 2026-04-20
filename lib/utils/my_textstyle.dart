@@ -201,6 +201,8 @@ class MyTextstyle {
     fontFamily: fontFamily,
     color: MyConstant.textRed,
   );
+  static TextStyle b2Green() =>
+      TextStyle(fontSize: 12, fontFamily: fontFamily, color: Color(0xFF008145));
 
   // ===== Date small ====
   static TextStyle dateShowBlack() => TextStyle(

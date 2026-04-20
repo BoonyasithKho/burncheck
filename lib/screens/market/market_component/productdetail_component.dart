@@ -1,7 +1,9 @@
 import 'package:burncheck/bloc/market/market_bloc.dart';
 import 'package:burncheck/utils/my_api.dart';
+import 'package:burncheck/utils/my_asset.dart';
 import 'package:burncheck/utils/my_constant.dart';
 import 'package:burncheck/utils/my_textstyle.dart';
+import 'package:burncheck/widgets/show_svg.dart';
 import 'package:burncheck/widgets/show_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +83,7 @@ class _ProductdetailComponentState extends State<ProductdetailComponent> {
                   width: size.width,
                   decoration: BoxDecoration(color: MyConstant.marketLightGrey2),
                   child: Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: MyConstant.bgWhite,
@@ -105,16 +107,23 @@ class _ProductdetailComponentState extends State<ProductdetailComponent> {
                                         ? MyConstant.bgRed
                                         : MyConstant.bgLightGrey2,
                                     borderRadius: BorderRadius.circular(16.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 2,
+                                        color: MyConstant.bgDarkGrey,
+                                        offset: Offset(0, 2),
+                                      ),
+                                    ],
                                   ),
-                                  width: (size.width / 3) - 24,
+                                  width: (size.width / 3) - 32,
                                   height: 32,
                                   child: Center(
                                     child: ShowText(
                                       title:
                                           MyConstant.menuProductDetail[index],
                                       textStyle: state.menuDetailSelect == index
-                                          ? MyTextstyle.b1WhiteBold()
-                                          : MyTextstyle.b1Red(),
+                                          ? MyTextstyle.b2WhiteBold()
+                                          : MyTextstyle.b2Red(),
                                     ),
                                   ),
                                 ),
@@ -127,6 +136,10 @@ class _ProductdetailComponentState extends State<ProductdetailComponent> {
                           Expanded(
                             child: Container(
                               width: size.width * 0.88,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 8.0,
+                              ),
                               decoration: BoxDecoration(
                                 color: MyConstant.bgWhite,
                                 borderRadius: BorderRadius.circular(8.0),
@@ -146,6 +159,142 @@ class _ProductdetailComponentState extends State<ProductdetailComponent> {
                                   ),
                                 ],
                               ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        flex: 4,
+                                        child: ShowText(
+                                          title:
+                                              widget.content["productTypeName"],
+                                          textStyle: MyTextstyle.h1Black(),
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 16.0,
+                                          vertical: 2.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            16.0,
+                                          ),
+                                          color: widget.content["postType"] == 0
+                                              ? MyConstant.marketRed.withAlpha(
+                                                  50,
+                                                )
+                                              : MyConstant.marketGreen
+                                                    .withAlpha(50),
+                                        ),
+                                        child: ShowText(
+                                          title: widget.content["postType"] == 0
+                                              ? 'ประกาศขาย'
+                                              : 'ประกาศซื้อ',
+                                          textStyle:
+                                              widget.content["postType"] == 0
+                                              ? MyTextstyle.b2Red()
+                                              : MyTextstyle.b2Green(),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  ShowText(
+                                    title:
+                                        'ประกาศโดย : ${widget.content["postOwner"]}',
+                                    textStyle: MyTextstyle.b1DarkGrey(),
+                                  ),
+                                  Expanded(child: SizedBox()),
+                                  Row(
+                                    children: [
+                                      ShowSVG(
+                                        pathFile: MyAsset.greenPinIcon,
+                                        assetWidth: 20,
+                                        assetHeight: 20,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 8.0,
+                                        ),
+                                        child: ShowText(
+                                          title: widget.content["locAdminName"],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                      vertical: 2.0,
+                                    ),
+                                    width: 120,
+                                    height: 28,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      color: widget.content["postType"] == 0
+                                          ? MyConstant.marketRed.withAlpha(50)
+                                          : MyConstant.marketGreen.withAlpha(
+                                              50,
+                                            ),
+                                    ),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        ShowText(
+                                          title:
+                                              "฿${widget.content["productPrice"]}",
+                                          textStyle: MyTextstyle.h2Black(),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            bottom: 2.0,
+                                            left: 4.0,
+                                          ),
+                                          child: ShowText(
+                                            title: MyConstant.unitPrice,
+                                            textStyle: MyTextstyle.b2Black(),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Row(
+                                          children: List.generate(
+                                            widget.content['postRating'] != 0
+                                                ? int.parse(
+                                                    widget
+                                                        .content["postRating"],
+                                                  )
+                                                : widget.content['postRating'],
+                                            (index) => ShowSVG(
+                                              pathFile: MyAsset.statFull,
+                                              assetHeight: 16.0,
+                                            ),
+                                          ),
+                                        ),
+                                        ShowText(
+                                          title: widget.content["postRating"]
+                                              .toString(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              // child: ShowText(
+                              //   title: widget.content["productTypeName"],
+                              // ),
                             ),
                           ),
                         Padding(

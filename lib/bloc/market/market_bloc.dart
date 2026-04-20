@@ -102,11 +102,59 @@ class MarketBloc extends Bloc<MarketEvent, MarketState> {
           'productImage': responseJson.data[i].productImages!.isNotEmpty
               ? responseJson.data[i].productImages![0].thumbnail
               : "",
-          'creatDate': responseJson.data[i].createdAt,
-          'expireDate': responseJson.data[i].expiresAt,
+          'creatDate': responseJson.data[i].createdAt.day < 10
+              ? "${responseJson.data[i].createdAt.day}-${checkMonthThai(responseJson.data[i].createdAt.month)}-0${responseJson.data[i].createdAt.year}"
+              : "${responseJson.data[i].createdAt.day}-${checkMonthThai(responseJson.data[i].createdAt.month)}-${responseJson.data[i].createdAt.year}",
+          'expireDate': responseJson.data[i].createdAt.day < 10
+              ? "${responseJson.data[i].expiresAt.day}-${checkMonthThai(responseJson.data[i].expiresAt.month)}-0${responseJson.data[i].expiresAt.year}"
+              : "${responseJson.data[i].expiresAt.day}-${checkMonthThai(responseJson.data[i].expiresAt.month)}-${responseJson.data[i].expiresAt.year}",
         });
       }
     }
     return productItem;
+  }
+
+  String checkMonthThai(int monthNo) {
+    String whatIsMonth = '';
+    switch (monthNo) {
+      case 1:
+        whatIsMonth = 'ม.ค.';
+        break;
+      case 2:
+        whatIsMonth = 'ม.ค.';
+        break;
+      case 3:
+        whatIsMonth = 'มี.ค.';
+        break;
+      case 4:
+        whatIsMonth = 'เม.ย.';
+        break;
+      case 5:
+        whatIsMonth = 'พ.ค.';
+        break;
+      case 6:
+        whatIsMonth = 'มิ.ย.';
+        break;
+      case 7:
+        whatIsMonth = 'ก.ค.';
+        break;
+      case 8:
+        whatIsMonth = 'ส.ค.';
+        break;
+      case 9:
+        whatIsMonth = 'ก.ย.';
+        break;
+      case 10:
+        whatIsMonth = 'ต.ค.';
+        break;
+      case 11:
+        whatIsMonth = 'พ.ย.';
+        break;
+      case 12:
+        whatIsMonth = 'ธ.ค.';
+        break;
+      default:
+    }
+    return whatIsMonth;
   }
 }
