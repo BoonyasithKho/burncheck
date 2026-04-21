@@ -45,3 +45,8 @@ class MarkerEventGetProductDetailMenu extends MarketEvent {
   final int menuIndexSelect;
   const MarkerEventGetProductDetailMenu({required this.menuIndexSelect});
 }
+
+class MarkerEventSelectDetailMenu extends MarketEvent {
+  final int menuSelectDetail;
+  const MarkerEventSelectDetailMenu({required this.menuSelectDetail});
+}

@@ -102,8 +102,9 @@ class _MarketScreenState extends State<MarketScreen> {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) =>
-                                    ProductdetailComponent(content: item),
+                                builder: (_) => ProductdetailComponent(
+                                  postID: item["postId"],
+                                ),
                               ),
                             ),
                             child: Container(
@@ -112,6 +113,10 @@ class _MarketScreenState extends State<MarketScreen> {
                               decoration: BoxDecoration(
                                 color: MyConstant.bgWhite,
                                 borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: MyConstant.border,
+                                  width: 0.2,
+                                ),
                                 boxShadow: [
                                   BoxShadow(
                                     color: MyConstant.textDarkGrey,

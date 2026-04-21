@@ -7,7 +7,8 @@ class MarketState extends Equatable {
   final int rangeSelect;
   final RangeValues priceRange;
   final List<Map<String, dynamic>> productItem;
-  final int menuDetailSelect;
+  final Map<String, dynamic> menuDetailSelect;
+  final int markerMenuSelect;
 
   const MarketState({
     required this.typeSelected,
@@ -17,6 +18,7 @@ class MarketState extends Equatable {
     required this.priceRange,
     required this.productItem,
     required this.menuDetailSelect,
+    required this.markerMenuSelect,
   });
 
   MarketState copyWith({
@@ -26,7 +28,8 @@ class MarketState extends Equatable {
     int? rangeSelect,
     RangeValues? priceRange,
     List<Map<String, dynamic>>? productItem,
-    int? menuDetailSelect,
+    Map<String, dynamic>? menuDetailSelect,
+    int? markerMenuSelect,
   }) {
     return MarketState(
       typeSelected: typeSelected ?? this.typeSelected,
@@ -36,6 +39,7 @@ class MarketState extends Equatable {
       priceRange: priceRange ?? this.priceRange,
       productItem: productItem ?? this.productItem,
       menuDetailSelect: menuDetailSelect ?? this.menuDetailSelect,
+      markerMenuSelect: markerMenuSelect ?? this.markerMenuSelect,
     );
   }
 
@@ -48,5 +52,6 @@ class MarketState extends Equatable {
     priceRange,
     productItem,
     menuDetailSelect,
+    markerMenuSelect,
   ];
 }

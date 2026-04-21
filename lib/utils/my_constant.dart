@@ -11,6 +11,7 @@ class MyConstant {
   static String unitTemperature = '°C';
   static String unitPM = 'µg/m³';
   static String unitPrice = 'บาท/กก.';
+  static String unitWeight = 'กก.';
 
   // => Color ============================================
   // => Background
