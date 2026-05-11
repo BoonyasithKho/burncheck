@@ -17,7 +17,7 @@ class PriceComponent extends StatefulWidget {
 
 class _PriceComponentState extends State<PriceComponent> {
   late final Future<List<dynamic>> _priceFuture;
-  List<PriceBoard> priceData = [];
+  List<Datum> priceData = [];
 
   @override
   void initState() {
@@ -25,18 +25,19 @@ class _PriceComponentState extends State<PriceComponent> {
     _priceFuture = getPriceRate();
   }
 
-  Future<List<PriceBoard>> getPriceRate() async {
+  Future<List<Datum>> getPriceRate() async {
     var response = await http.get(Uri.parse(MyApi.priceBoard));
 
     var jsonData = jsonDecode(response.body);
 
-    for (var u in jsonData) {
-      PriceBoard getData = PriceBoard(
-        productTypeId: u["product_type_id"],
-        name: u["name"],
-        min: double.parse(u["min"]).toStringAsFixed(2),
-        avg: double.parse(u["avg"]).toStringAsFixed(2),
-        max: double.parse(u["max"]).toStringAsFixed(2),
+    for (var u in jsonData["data"]) {
+      Datum getData = Datum(
+        id: u["id"],
+        materialName: u["material_name"],
+        minPrice: double.parse(u["min_price"]).toStringAsFixed(2),
+        avgPrice: double.parse(u["avg_price"]).toStringAsFixed(2),
+        maxPrice: double.parse(u["max_price"]).toStringAsFixed(2),
+        itemValue: u["item_value"],
       );
       priceData.add(getData);
     }
@@ -200,7 +201,7 @@ class _PriceComponentState extends State<PriceComponent> {
                                 contentTable(
                                   snapshot,
                                   index,
-                                  snapshot.data[index].name,
+                                  snapshot.data[index].materialName,
                                   TextAlign.left,
                                 ),
                                 Expanded(
@@ -212,19 +213,19 @@ class _PriceComponentState extends State<PriceComponent> {
                                       contentTable(
                                         snapshot,
                                         index,
-                                        snapshot.data[index].min,
+                                        snapshot.data[index].minPrice,
                                         TextAlign.center,
                                       ),
                                       contentTable(
                                         snapshot,
                                         index,
-                                        snapshot.data[index].avg,
+                                        snapshot.data[index].avgPrice,
                                         TextAlign.center,
                                       ),
                                       contentTable(
                                         snapshot,
                                         index,
-                                        snapshot.data[index].max,
+                                        snapshot.data[index].maxPrice,
                                         TextAlign.center,
                                       ),
                                     ],

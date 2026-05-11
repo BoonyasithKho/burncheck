@@ -12,7 +12,8 @@ class MyApi {
 
   // API URL
   static String priceBoard =
-      "https://burncheck.com/ajax/v3/statistics/price_board";
+      // "https://burncheck.com/ajax/v3/statistics/price_board";
+      "http://localhost:8000/api/biomass-prices";
   static String urlPM25Home =
       "https://pm25.gistda.or.th/rest/getPm25byLocation";
   static String urlDataWeather =

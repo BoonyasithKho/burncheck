@@ -1,57 +1,81 @@
 // To parse this JSON data, do
 //
-//     final priceBoard = priceBoardFromJson(jsonString);
+//     final priceBoardModel = priceBoardModelFromJson(jsonString);
 
 import 'dart:convert';
 
-List<PriceBoard> priceBoardFromJson(String str) =>
-    List<PriceBoard>.from(json.decode(str).map((x) => PriceBoard.fromJson(x)));
+PriceBoardModel priceBoardModelFromJson(String str) =>
+    PriceBoardModel.fromJson(json.decode(str));
 
-String priceBoardToJson(List<PriceBoard> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String priceBoardModelToJson(PriceBoardModel data) =>
+    json.encode(data.toJson());
 
-class PriceBoard {
-  final int productTypeId;
-  final String name;
-  final String min;
-  final String avg;
-  final String max;
+class PriceBoardModel {
+  List<Datum> data;
 
-  PriceBoard({
-    required this.productTypeId,
-    required this.name,
-    required this.min,
-    required this.avg,
-    required this.max,
+  PriceBoardModel({required this.data});
+
+  PriceBoardModel copyWith({List<Datum>? data}) =>
+      PriceBoardModel(data: data ?? this.data);
+
+  factory PriceBoardModel.fromJson(Map<String, dynamic> json) =>
+      PriceBoardModel(
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+  };
+}
+
+class Datum {
+  int id;
+  String materialName;
+  String minPrice;
+  String avgPrice;
+  String maxPrice;
+  int itemValue;
+
+  Datum({
+    required this.id,
+    required this.materialName,
+    required this.minPrice,
+    required this.avgPrice,
+    required this.maxPrice,
+    required this.itemValue,
   });
 
-  PriceBoard copyWith({
-    int? productTypeId,
-    String? name,
-    String? min,
-    String? avg,
-    String? max,
-  }) => PriceBoard(
-    productTypeId: productTypeId ?? this.productTypeId,
-    name: name ?? this.name,
-    min: min ?? this.min,
-    avg: avg ?? this.avg,
-    max: max ?? this.max,
+  Datum copyWith({
+    int? id,
+    String? materialName,
+    String? minPrice,
+    String? avgPrice,
+    String? maxPrice,
+    int? itemValue,
+  }) => Datum(
+    id: id ?? this.id,
+    materialName: materialName ?? this.materialName,
+    minPrice: minPrice ?? this.minPrice,
+    avgPrice: avgPrice ?? this.avgPrice,
+    maxPrice: maxPrice ?? this.maxPrice,
+    itemValue: itemValue ?? this.itemValue,
   );
 
-  factory PriceBoard.fromJson(Map<String, dynamic> json) => PriceBoard(
-    productTypeId: json["product_type_id"],
-    name: json["name"],
-    min: json["min"],
-    avg: json["avg"],
-    max: json["max"],
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    id: json["id"],
+    materialName: json["material_name"],
+    minPrice: json["min_price"],
+    avgPrice: json["avg_price"],
+    maxPrice: json["max_price"],
+    itemValue: json["item_value"],
   );
 
   Map<String, dynamic> toJson() => {
-    "product_type_id": productTypeId,
-    "name": name,
-    "min": min,
-    "avg": avg,
-    "max": max,
+    "id": id,
+    "material_name": materialName,
+    "min_price": minPrice,
+    "avg_price": avgPrice,
+    "max_price": maxPrice,
+    "item_value": itemValue,
   };
 }
