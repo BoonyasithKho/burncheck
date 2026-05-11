@@ -13,7 +13,7 @@ class MainpageState extends Equatable {
   final int pmSituation;
   final int tempValue;
   final int rainProp;
-  final int windSpeed;
+  final double windSpeed;
   final LocationStatus localtionStatus;
   final String lat;
   final String lng;
@@ -48,7 +48,7 @@ class MainpageState extends Equatable {
     int? pmSituation,
     int? tempValue,
     int? rainProp,
-    int? windSpeed,
+    double? windSpeed,
     LocationStatus? localtionStatus,
     String? lat,
     String? lng,

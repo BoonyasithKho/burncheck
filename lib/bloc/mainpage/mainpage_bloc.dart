@@ -190,7 +190,7 @@ class MainpageBloc extends Bloc<MainpageEvent, MainpageState> {
     final response = await http.get(Uri.parse(url), headers: requestHeaders);
     int weatherConditon = 9;
     dynamic temperature = '';
-    int windSpeed = 0;
+    double windSpeed = 0;
     String showUpdate = '';
 
     if (response.statusCode == 200) {
@@ -245,6 +245,7 @@ class MainpageBloc extends Bloc<MainpageEvent, MainpageState> {
         weatherConditon = 9;
       }
     }
+    // return [10, 22, showUpdate, 1];
     return [temperature.round(), windSpeed, showUpdate, weatherConditon];
   }
 
